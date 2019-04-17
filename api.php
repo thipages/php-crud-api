@@ -5615,6 +5615,24 @@ class Config
     }
 }
 
+// file: src/Tqdev/PhpCrudApi/Output.php
+class Output {
+    private $config;
+    public function __construct($username, $password, $database,$cacheType='NoCache', $options=null) {
+        if ($options===null) $options=[];
+        $options['username']=$username;
+        $options['password']=$password;
+        $options['database']=$database;
+        $options['cacheType']=$cacheType;
+        $this->config = new Config($options);
+    }
+    public function echo() {
+        $request = new Request();
+        $api = new Api($this->config);
+        $response = $api->handle($request);
+        $response->output();
+    }
+}
 // file: src/Tqdev/PhpCrudApi/Request.php
 
 class Request
@@ -5898,7 +5916,7 @@ class Response
 
 // file: src/index.php
 
-$config = new Config([
+/*$config = new Config([
     'username' => 'php-crud-api',
     'password' => 'php-crud-api',
     'database' => 'php-crud-api',
@@ -5906,4 +5924,4 @@ $config = new Config([
 $request = new Request();
 $api = new Api($config);
 $response = $api->handle($request);
-$response->output();
+$response->output();*/

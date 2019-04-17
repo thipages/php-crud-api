@@ -7,7 +7,7 @@ use Tqdev\PhpCrudApi\Request;
 spl_autoload_register(function ($class) {include str_replace('\\', '/', __DIR__ . "/$class.php");});
 // as it is excluded in the build
 
-$config = new Config([
+/*$config = new Config([
     'username' => 'php-crud-api',
     'password' => 'php-crud-api',
     'database' => 'php-crud-api',
@@ -15,4 +15,4 @@ $config = new Config([
 $request = new Request();
 $api = new Api($config);
 $response = $api->handle($request);
-$response->output();
+$response->output();*/
